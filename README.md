@@ -14,7 +14,7 @@ However, I was not able to find anything there, so I try to searched the file wi
 
 ![image alt](https://github.com/Field2548/picoCTF-hideme/blob/678d3f25de57ed78e62b2571e7ac2ae5b4afd724/hexeditor.png)
 
-As you may noticed, "secret/flag.png" seems to be something that will help in finding our flag. However, I was not that proficient in forensic yet so I I was unsure of its exact significance. To better understand, I googled about cryptography-particularly topics relating to file hidden in an image and came across a tool called 'Binwalk' from this website: https://ctfs.github.io/resources/topics/steganography/file-in-image/README.html
+As you may noticed, "secret/flag.png" seems to be something that will help in finding our flag. However, I was not that proficient in forensic yet so I was unsure of its exact significance. To better understand, I googled about cryptography-particularly topics relating to file hidden in an image and came across a tool called 'Binwalk' from this website: https://ctfs.github.io/resources/topics/steganography/file-in-image/README.html
 
 ![image alt](https://github.com/Field2548/picoCTF-hideme/blob/1dec12788bc27bb0ea32811f36a49d83927f6b66/Binwalk.png)
 
