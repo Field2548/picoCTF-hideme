@@ -6,12 +6,14 @@
 
 ## Solution ##
 
-First, I downloaded the flag.png file given by the challenge. Then I took a look around to identify any clues or useful information within the image's details, using an online exiftool -> https://exif.tools. However, I was not able to find anything there, so I try to searched the file with a hex editor (https://hexed.it) and was able to spot something interesting there:
+First, I downloaded the flag.png file given by the challenge. Then I took a look around to identify any clues or useful information within the image's details, using an online exiftool -> https://exif.tools. 
 
+![image alt]()
 
+However, I was not able to find anything there, so I try to searched the file with a hex editor (https://hexed.it) and was able to spot something interesting there:
 
+![image alt](https://github.com/Field2548/picoCTF-hideme/blob/678d3f25de57ed78e62b2571e7ac2ae5b4afd724/hexeditor.png)
 
-and using `strings`, there was no flag, however I did find references to a "secret" and "secret/flag.png", but nothing in the form of `picoCTF{flag}`.
 
 
 
