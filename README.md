@@ -8,31 +8,26 @@
 
 First, I downloaded the flag.png file given by the challenge. Then I took a look around to identify any clues or useful information within the image's details, using an online exiftool -> https://exif.tools. 
 
-![image alt]()
+![image alt](https://github.com/Field2548/picoCTF-hideme/blob/1dec12788bc27bb0ea32811f36a49d83927f6b66/exiftool.png)
 
 However, I was not able to find anything there, so I try to searched the file with a hex editor (https://hexed.it) and was able to spot something interesting there:
 
 ![image alt](https://github.com/Field2548/picoCTF-hideme/blob/678d3f25de57ed78e62b2571e7ac2ae5b4afd724/hexeditor.png)
 
+As you may noticed, "secret/flag.png" seems to be something that will help in finding our flag. However, I was not that proficient in forensic yet so I I was unsure of its exact significance. To better understand, I googled about cryptography-particularly topics relating to file hidden in an image and came across a tool called 'Binwalk' from this website: https://ctfs.github.io/resources/topics/steganography/file-in-image/README.html
 
+![image alt](https://github.com/Field2548/picoCTF-hideme/blob/1dec12788bc27bb0ea32811f36a49d83927f6b66/Binwalk.png)
 
+The `binwalk` utility detected a ZIP archive appended to the original `flag.png` image file.
 
-The `binwalk` utility identified a zip archive appended to the original flag image file :
+The ZIP archive was extracted using the command `binwalk -e`, which automatically identifies and extracts embedded files from the image.
 
-    $ binwalk flag.png 
+![image alt](https://github.com/Field2548/picoCTF-hideme/blob/1dec12788bc27bb0ea32811f36a49d83927f6b66/binwalk%20-e%20result.png)
 
-    DECIMAL       HEXADECIMAL     DESCRIPTION
-    --------------------------------------------------------------------------------
-    0             0x0             PNG image, 512 x 504, 8-bit/color RGBA, non-interlaced
-    41            0x29            Zlib compressed data, compressed
-    39739         0x9B3B          Zip archive data, at least v1.0 to extract, name: secret/
-    39804         0x9B7C          Zip archive data, at least v2.0 to extract, compressed size: 2997, uncompressed size: 3152, name: secret/flag.png
-    43036         0xA81C          End of Zip archive, footer length: 22
+Next, I accessed the extracted ZIP file and downloaded the image from the webshell using the `sz` command.
 
-The zip archive was extract using `binwalk` :
+![image alt](https://github.com/Field2548/picoCTF-hideme/blob/1dec12788bc27bb0ea32811f36a49d83927f6b66/download%20file%20to%20computer.png)
 
-    $ binwalk -e flag.png
+This process revealed another 'flag.png' file located at 'hideme/_flag.png.extracted/secret/flag.png'. Hurray!!! We can find our flag with an image editor, allowing us to capture and submit it.
 
-This yielded another `flag.png` within `hideme/_flag.png.extracted/secret/flag.png` which when viewed with an image editor and displayed the flag (actual flag value redacted for the purposes of this write up):
-
-    picoCTF{........redacted........}
+![image alt](https://github.com/Field2548/picoCTF-hideme/blob/1dec12788bc27bb0ea32811f36a49d83927f6b66/flag-2.png)
