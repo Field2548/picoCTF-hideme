@@ -1,20 +1,19 @@
 # picoCTF-hideme #
  
-## Challenge-Description ##
+## Challenge ##
 
-
- 
-Every file gets a flag.
-The SOC analyst saw one image been sent back and forth between two people. They decided to investigate and found out that there was more than what meets the eye here.
+![image alt](https://github.com/Field2548/picoCTF-hideme/blob/c28ceba1ab9240e04a31c879be6ad4ebe67a08cd/Challenge.png)
 
 ## Solution ##
 
-First, I downloaded the flag.png file given by the challenge. Then I took a look around to identify any clues or useful information within the image's details, using an online exiftool -> https://exif.tools/upload.php. 
+First, I downloaded the flag.png file given by the challenge. Then I took a look around to identify any clues or useful information within the image's details, using an online exiftool -> https://exif.tools. However, I was not able to find anything there, so I try to searched the file with a hex editor (https://hexed.it) and was able to spot something interesting there:
 
 
-searched the file with a hex editor ([ImHex](https://github.com/WerWolv/ImHex)) and using `strings`, there was no flag, however I did find references to a "secret" and "secret/flag.png", but nothing in the form of `picoCTF{flag}`.
 
-## Solution ##
+
+and using `strings`, there was no flag, however I did find references to a "secret" and "secret/flag.png", but nothing in the form of `picoCTF{flag}`.
+
+
 
 The `binwalk` utility identified a zip archive appended to the original flag image file :
 
